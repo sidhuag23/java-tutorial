@@ -1112,6 +1112,166 @@ The most common use of the this keyword is to <b> eliminate the confusion </b> b
 ```
 #### using this we can use explicit constructor invocation
 we can use this keyword to call another constructor in the same class 
+```java
+
+class Test{
+    int a;
+    int b;
+
+    int x;
+
+    //default constructor
+    Test(){
+        this(10,20,4040);
+        System.out.println("Inside default constructor "+a+" "+b);
+        System.out.println("Inside default constructor this "+this.a+" "+this.b);
+        System.out.println("specially added cool one "+this.x+" "+x);
+    }
+    Test(int a,int b,int x){
+        this.a=a;
+        this.b=b;
+        this.x=x;
+        System.out.println("Inside parameterised constructor "+a+" "+b);
+        System.out.println("Inside parameterised constructor this "+this.a+" "+this.b);
+        System.out.println("specially added cool one "+this.x+" "+x);
+        System.out.println("specially added cool one "+this.x+" "+x);
+    }
+
+}
+
+
+public class Fun {
+    public static void main(String[] args) {
+
+        Test object = new Test();
+        System.out.println("-----------------");
+        Test object1 = new Test(90,30,90);
+
+
+    }
+}
+```
+```output
+output
+
+Inside parameterised constructor 10 20
+Inside parameterised constructor this 10 20
+specially added cool one 4040 4040
+specially added cool one 4040 4040
+Inside default constructor 10 20
+Inside default constructor this 10 20
+specially added cool one 4040 4040
+-----------------
+Inside parameterised constructor 90 30
+Inside parameterised constructor this 90 30
+specially added cool one 90 90
+specially added cool one 90 90
+
+```
+```java 
+class Rectangle {
+    int x, y;
+    int width, height;
+
+    public Rectangle() {
+        this(25,25, 90, 4590);
+        System.out.println("morning");
+        System.out.println(this.x+" "+x);
+        System.out.println(this.y+" "+y);
+        System.out.println(this.width+" "+width);
+        System.out.println(this.height+" "+height);
+    }
+    public Rectangle(int width, int height) {
+        this(9090, 9090, width, height);
+        System.out.println("test");
+        System.out.println(this.x+" "+x);
+        System.out.println(this.y+" "+y);
+        System.out.println(this.width+" "+width);
+        System.out.println(this.height+" "+height);
+    }
+    public Rectangle(int x, int y, int width, int height) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+        System.out.println("fine");
+        System.out.println(this.x+" "+x);
+        System.out.println(this.y+" "+y);
+        System.out.println(this.width+" "+width);
+        System.out.println(this.height+" "+height);
+    }
+}
+public class Testfun{
+
+    public static void main(String [] args){
+      Rectangle y = new Rectangle();
+      System.out.println("------------");
+      Rectangle x = new Rectangle(12,34);
+      System.out.println("------------");
+      Rectangle z = new Rectangle(12,34,556,67);
+
+    }
+}
+
+```
+```output
+output
+
+fine
+25 25
+25 25
+90 90
+4590 4590
+morning
+25 25
+25 25
+90 90
+4590 4590
+------------
+fine
+9090 9090
+9090 9090
+12 12
+34 34
+test
+9090 9090
+9090 9090
+12 12
+34 34
+------------
+fine
+12 12
+34 34
+556 556
+67 67
+
+```
+
+#### generating a random number 1 to 6 
+
+```java 
+
+import java.util.Random;
+
+public class Fun {
+    //generating a random number 1 to 6
+    public static void main(String[] args) {
+
+        Random test = new Random();
+        cool(test,1);
+
+    }
+    public static void cool(Random cool_num,int number){
+       number = cool_num.nextInt(6)+1;
+       System.out.println(number);
+
+    }
+}
+
+```
+
+
+
 
 
 
