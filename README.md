@@ -1268,3 +1268,36 @@ public class Fun {
     }
 }
 ```
+##### local and global scope variables 
+```java 
+import java.util.Random;
+class TheClass{
+
+    Random z; //global scope
+    int number;
+
+    TheClass(){
+        z = new Random(); //Random class is accessible because it has a global scope
+        roll();
+        //anything inside this is locol to this constructor
+    }
+    void roll(){
+        number = z.nextInt(6)+1; //number method is accessible because it has a global scope
+        System.out.println(number);
+        //anything inside this is local to roll() method
+    }
+}
+
+public class Fun {
+
+    public static void main(String[] args) {
+
+        //local = declared inside a method visible only to that method
+        //global = declared outside a method but within a class visible to all parts of a class
+        
+        TheClass xy = new TheClass();
+
+    }
+}
+
+```
