@@ -1301,3 +1301,37 @@ public class Fun {
 }
 
 ```
+#### constructor overloading 
+```java 
+
+class TheClass{
+        
+        //overloading constructor 
+       TheClass(int x,int y){
+          int sum = x+y;
+          System.out.printf("%d\n",sum);
+       }
+       TheClass(int x,int y,int z)
+       {
+           int sum = x+y+z;
+           System.out.printf("%d\n",sum);
+      }
+       TheClass(int x,int y,int w,String z ){
+           int sum = x+y+w;
+           System.out.printf("%d %s\n",sum,z);
+       }
+}
+
+public class Fun {
+
+
+    public static void main(String[] args) {
+
+        TheClass xy = new TheClass(5,5,5);
+        TheClass xyz = new TheClass(0,20,10,"someString");
+
+    }
+}
+
+```
+
