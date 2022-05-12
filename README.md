@@ -1335,3 +1335,335 @@ public class Fun {
 
 ```
 
+#### toString()
+```java 
+
+class Rectangle {
+  int height =10;
+  int width =5;
+
+}
+
+public class Testfun{
+
+    public static void main(String [] args){
+        Rectangle x = new Rectangle();
+
+        System.out.println(x); // output -> Rectangle@6d03e736
+         /*
+         toString() = special method that all object inherit ,
+                      that returns a string that "textually represents " an object.
+                      can be used both implicitly and explicitly
+                      
+                      Returns a string representation of the object. 
+                      In general, the toString method returns a string 
+                      that "textually represents" this object. 
+                      The result should be a concise but informative representation that is easy for a person to read. 
+                      It is recommended that all subclasses override this method.
+          */
+        System.out.println("address/location of object "+x.toString());
+        
+    }
+}
+
+```
+
+```java
+class TheClass{
+    String make = "ford";
+    String model = "Mustang";
+    String color = "red";
+    int year = 2022;
+
+    //toString() //meaning
+
+    public String toString(){
+        return make+"\n"+model+"\n"+color+"\n"+"cool";
+    }
+}
+public class Fun {
+
+    public static void main(String[] args) {
+
+        TheClass x = new TheClass();
+        System.out.println(x);
+
+        System.out.println("cool :"+x.getClass().getSimpleName());
+    }
+}
+
+```
+```output
+ford
+Mustang
+red
+cool
+cool :TheClass
+```
+
+
+##### array of object
+```java
+class TheClass {
+
+    String name;
+    TheClass(String name){
+        this.name = name;
+        System.out.println("assigned");
+    }
+    public void testprint(){
+        System.out.println(this.name);
+    }
+
+}
+
+public class Fun {
+
+    public static void main(String[] args) {
+
+        TheClass[] testOBJ = new TheClass[3];  //array of objects;
+
+        TheClass obj1 = new TheClass("pizza");
+        TheClass obj2 = new TheClass("hamburger");
+        TheClass obj3 = new TheClass("hotdog");
+
+        testOBJ[0]=obj1;
+        testOBJ[1]=obj2;
+        testOBJ[2]=obj3; 
+        // or -> TheClass[] testObj={obj1,obj2,obj3};
+
+        for(int i=0; i<testOBJ.length;i++){
+            System.out.println("-----");
+            testOBJ[i].testprint();
+        }
+    }
+}
+
+```
+```output 
+assigned
+assigned
+assigned
+-----
+pizza
+-----
+hamburger
+-----
+hotdog
+```
+
+```java 
+import java.util.*;
+
+class TheClass {
+  private String name;
+  private int marks;
+
+ public void details(String n, int x){
+     name = n;
+     marks = x;
+ }
+ public void printAll(){
+     System.out.println("your name is "+name);
+     System.out.println("your age is "+marks);
+ }
+
+}
+
+public class Fun {
+
+    public static void main(String[] args) {
+
+        TheClass[] xOBJ = new TheClass[5];
+        Scanner input_x = new Scanner(System.in);
+        Scanner input_y = new Scanner(System.in);
+
+        for(int i=0; i<xOBJ.length; i++){
+            System.out.println("student "+(i+1));
+
+            System.out.println("enter the students name");
+            String name = input_x.nextLine();
+
+            System.out.println("enter the students age");
+            int age = input_y.nextInt();
+
+            xOBJ[i] = new TheClass();
+            xOBJ[i].details(name,age);
+
+        }
+
+        for(int i=0; i< xOBJ.length; i++){
+            xOBJ[i].printAll();
+        }
+         System.out.println("----------");
+        xOBJ[2].printAll(); //onject returns something at position at [2]
+    }
+}
+
+```
+```
+student 1
+enter the students name
+ew
+enter the students age
+23
+student 2
+enter the students name
+fglfkl
+enter the students age
+32
+student 3
+enter the students name
+fdgvd
+enter the students age
+323
+student 4
+enter the students name
+fdsd
+enter the students age
+34
+student 5
+enter the students name
+df
+enter the students age
+34
+your name is ew
+your age is 23
+your name is fglfkl
+your age is 32
+your name is fdgvd
+your age is 323
+your name is fdsd
+your age is 34
+your name is df
+your age is 34
+----------
+your name is fdgvd
+your age is 323
+df
+```
+```java 
+import java.util.*;
+import javax.swing.JOptionPane;
+import java.util.Random;
+
+class TheClass {
+  private String name;
+  private int marks;
+
+TheClass(String name, int marks){
+    System.out.println("enter student details ");
+     this.name = name;
+     this.marks = marks;
+ }
+ public void printAll(){
+     System.out.println("your name is "+this.name);
+     System.out.println("your age is "+this.marks);
+ }
+
+}
+
+public class Fun {
+
+    public static void main(String[] args) {
+
+        TheClass[] xOBJ = new TheClass[5];
+        Scanner input_x = new Scanner(System.in);
+        Scanner input_y = new Scanner(System.in);
+
+        for(int i=0; i<xOBJ.length; i++){
+
+            System.out.println("enter the students name");
+            String name = input_x.nextLine();
+
+            System.out.println("enter the students age");
+            int age = input_y.nextInt();
+
+            xOBJ[i] = new TheClass(name,age); //invoking constructor
+
+        }
+
+        for(int i=0; i< xOBJ.length; i++){
+            xOBJ[i].printAll();
+        }
+        System.out.println("----------");
+        xOBJ[2].printAll(); //object returns something at position at [2]
+    }
+}
+```
+```
+enter the students name
+ewf
+enter the students age
+32
+enter student details 
+enter the students name
+ef
+enter the students age
+23
+enter student details 
+enter the students name
+ds
+enter the students age
+2
+enter student details 
+enter the students name
+sd
+enter the students age
+2
+enter student details 
+enter the students name
+d
+enter the students age
+3
+enter student details 
+your name is ewf
+your age is 32
+your name is ef
+your age is 23
+your name is ds
+your age is 2
+your name is sd
+your age is 2
+your name is d
+your age is 3
+----------
+your name is ds
+your age is 2
+
+```
+
+#####  object passing (sending object as a method parameter)
+
+```java 
+
+class TheClass {
+
+    String name;
+
+    TheClass(String name){
+        this.name = name;
+    }
+}
+class NewClass{  
+     //passing object 
+    void park(TheClass test1){
+        System.out.println("the "+test1.name+"is parked");
+    }
+}
+
+public class Fun {
+    public static void main(String[] args) {
+
+        NewClass new_class = new NewClass();
+
+        TheClass the_class1 = new TheClass("BMW");
+        TheClass the_class2 = new TheClass("tesla");
+
+        new_class.park(the_class1);
+        new_class.park(the_class2);
+        
+    }
+}
+
+```
