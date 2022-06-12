@@ -1666,6 +1666,257 @@ public class Fun {
     }
 }
 
-##### static keyword 
 ```
-#### static keyword 
+#### simple sum of 2D matrix alogrthim
+```java 
+  public class matrices {
+
+     public static void main(String[] args){
+          int [][]a={
+                  {12,34,55},
+                  {34,45,56},
+                  {45,66,88}
+          };
+
+          for(int i=0; i<a.length;i++){
+               System.out.println();
+               for(int j=0; j<a[i].length;j++){
+                    System.out.print(" ["+a[i][j]+"] ");
+               }
+          }
+
+          int [][]b={
+                  {1,2,1},
+                  {2,1,2},
+                  {1,2,1}
+          };
+
+          for(int i=0; i<b.length;i++){
+               System.out.println();
+               for(int j=0; j<b[i].length;j++){
+                    System.out.print(" ["+b[i][j]+"] ");
+               }
+          }
+
+          int [][]sum = new int[3][3];
+
+          for(int i=0; i<sum.length ; i++){
+               for(int j=0; j<sum[i].length; j++)
+                    sum[i][j]=a[i][j]+b[i][j];
+          }
+
+          for(int i=0; i<sum.length ; i++){
+               System.out.println();
+               for(int j=0; j<sum[i].length; j++)
+                    System.out.print(" ["+sum[i][j]+"] ");
+          }
+     }
+}
+```
+```output
+[12]  [34]  [55] 
+ [34]  [45]  [56] 
+ [45]  [66]  [88] 
+ [1]  [2]  [1] 
+ [2]  [1]  [2] 
+ [1]  [2]  [1] 
+ [13]  [36]  [56] 
+ [36]  [46]  [58] 
+ [46]  [68]  [89] 
+```
+#### static keyword
+```java 
+class Test_this{
+
+    //static -> modifier . A single copy of a variable/method is created and shared The class "owns " the static members
+    // anything that class owns shared by all instances(object) of the class because there is only one copy
+
+   static int test=10;
+   static int test2 = 90;
+
+   public static void print_these(){
+       System.out.println(test2+1);
+   }
+
+    }
+class Testfun{
+    public static void main(String[] args){
+
+        //you dont need to create an object for static method you can just access them by {class_name.member}
+         System.out.println(Test_this.test);
+         Test_this.print_these();
+
+    }
+}
+```
+```output 
+10
+91
+```
+```java 
+//static member example 2
+class Test_this{
+    String name;
+    static int numberOfCars=0;
+
+    Test_this(String name) {
+         this.name = name;
+         numberOfCars++;
+   }
+}
+
+class Testfun{
+    public static void main(String[] args){
+
+        Test_this Car = new Test_this("porsche cayenne");
+        Test_this Car1 = new Test_this("maserati quattraporte");
+        Test_this Car2 = new Test_this("BMW");
+
+
+        System.out.println(Test_this.numberOfCars); //output-> 3
+        // all 3 objects share the same static members
+
+        System.out.println(Car.numberOfCars); //output -> 3
+        System.out.println(Car1.numberOfCars); //output -> 3
+        System.out.println(Car2.numberOfCars); //output -> 3
+    }
+}
+```
+```java 
+//static method 
+class Test_this{
+    String name;
+    static int numberOfCars=0;
+
+    Test_this(String name) {
+         this.name = name;
+         numberOfCars++;
+   }
+   //static method
+   static void displayFriends(){
+        System.out.println("your cars are "+numberOfCars);
+   }
+
+}
+
+class Testfun{
+    public static void main(String[] args){
+
+        Test_this Car = new Test_this("porsche cayenne");
+        Test_this Car1 = new Test_this("maserati quattraporte");
+        Test_this Car2 = new Test_this("BMW");
+
+        //calling static method
+        Test_this.displayFriends(); //output -> your car are 3
+    }
+}
+```
+```java 
+//static method with fake main method 
+
+class New_main{
+    public static void main(){ //fake main method
+        System.out.print("hello world");
+        for(int i=0,n=5; i<n; i++){
+            System.out.println("hello world");
+        }
+    }
+
+}
+class Testfun{
+    public static void main(String[] args){ //original main method
+       New_main.main(); //because of static method we can call via classname.method_name
+    }
+}
+```
+
+#### Inhertiance in jave 
+```java 
+class Vehicle{ //parent class
+
+    double speed;
+
+     void go(){
+       System.out.println("This vechile is moving");
+     }
+     void stop(){
+         System.out.print("this vechile is stopped");
+     }
+
+}
+class Car extends Vehicle{ //child class -> parent vehicle
+
+     void display(){
+         System.out.println("yes its a car");
+     }
+
+}
+class Motorcycle extends Vehicle{ //child class -> parent vehicle
+    void display(){
+        speed =3.3;
+        System.out.println("yes this is a Motorcycle"+speed);
+    }
+
+}
+class Testfun{
+    public static void main(String[] args){
+
+        Car myCar = new Car();
+        myCar.go(); //inhertied method
+        myCar.display();
+
+
+        Motorcycle Bike = new Motorcycle();
+        Bike.go(); //inhertied method
+        Bike.display();
+
+    }
+}
+```
+```output 
+This vechile is moving
+yes its a car
+This vechile is moving
+yes this is a Motorcycle3.3
+```
+#### method overloading 
+```java 
+class Vehicle{ //parent class
+    void go(){
+        System.out.println("the tries to start");
+    }
+}
+class Car extends Vehicle{
+    void go(){
+        System.out.println("the car just starts");
+    }
+    void go(int x) {
+        System.out.println("your car speed is "+x);
+    }
+
+}
+class Motorcycle extends Vehicle{
+    void go() {  //method overriding
+        System.out.println("your bike starts");
+    }
+    void go(int x){
+        System.out.println("your bike speed is "+x);
+    }
+}
+
+class Testfun{
+    public static void main(String[] args){
+      //method overriding
+        //declaring a method in sub class,which is already present in parent class
+        //done so that a child class can give its own implementation
+      Motorcycle New_moto = new Motorcycle();
+      New_moto.go();
+      New_moto.go(34);
+
+      Car New_car = new Car();
+      New_car.go();
+      New_car.go(4030);
+
+    }
+}
+```
