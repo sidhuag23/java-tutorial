@@ -1920,3 +1920,130 @@ class Testfun{
     }
 }
 ```
+#### super keyword
+```java 
+//super = keyword refers to the superclass(parent) of an object very similar to this keyword
+/The super keyword in java is a reference variable that is used to refer parent class object
+
+class new_test {
+    void details(int x,int y){
+        System.out.println("the x is ->"+x+"the y is ->"+y);
+    }
+}
+class test extends new_test{
+     void new_details(){
+         super.details(10,30); //super keyword invoking method of the parent class
+         System.out.println("another details");
+         super.details(20,30);//super keyword invoking method of the parent class
+     }
+}
+class Main{
+    public static void main(String [] args){
+        test xc = new test();
+        xc.new_details();
+    }
+}
+```
+```output 
+the x is ->10the y is ->30
+another details
+the x is ->20the y is ->30
+```
+super using constructor
+```
+class new_test {
+    int name;
+    int age;
+    new_test(int name,int age){
+          this.name = name;
+          this.age = age;
+          System.out.println("constructor started");
+    }
+}
+class test extends new_test{
+    int power;
+    test(int name, int age,int power) {
+        super(name, age); // super keyword invoking constructor or the parent class
+        this.power=power;
+       System.out.println("name -> "+name+"age -> "+age);
+       System.out.println("dude power -> "+power);
+    }
+}
+
+class Main{
+    public static void main(String [] args){
+        test xc = new test(23,434,33);
+    }
+}
+
+```
+
+#### abstract class and method
+```java 
+//abstract class = abstract classes cannot be instantiated , but they can have a subclass
+// abstract method are declared without an implementation
+//only an abstract class can contain abstarct method
+ abstract class new_test {  //to create an instance/object for abstract class we want to inhert from a subclass otherwise we cant
+      abstract void go(int x); //abstract method
+ }
+
+class test extends new_test{ //inherted from abstract class
+     void go(int x){  //abstract method body is implemented inside the subclass
+         System.out.println(x);
+     }
+}
+
+class Main{
+    public static void main(String [] args){
+        test xc = new test();  
+        xc.go(10);  //output -> 10
+    }
+}
+```
+#### access modifers 
+As the name suggests access modifiers in Java helps to restrict the scope of a class, constructor, variable, method, or data member. There are four types of access modifiers available in java                      
+
+    Default – No keyword required
+    
+    Private
+    
+    Protected
+    
+    Public
+ 
+ For classes, you can use either public or default
+ 
+ <b>public</b>   ->	The class is accessible by any other class 
+ 
+<b>default</b>   -> 	The class is only accessible by classes in the same package. This is used when you don't specify a modifier. 
+
+For attributes, methods and constructors, you can use the one of the following
+<b>public</b>    ->	The code is accessible for all classes
+
+<b>private</b>    ->	The code is only accessible within the declared class 	
+
+<b>default</b>    ->	The code is only accessible in the same package. This is used when you don't specify a modifier.	
+
+<b>protected</b>   ->	The code is accessible in the same package and subclasses
+
+#### Non access modifers 
+For classes, you can use either final or abstract
+
+<b>final</b>   ->	The class cannot be inherited by other classes
+	
+<b>abstract</b>  ->	The class cannot be used to create objects (To access an abstract class, it must be inherited from another class
+
+For attributes and methods, you can use the one of the following
+
+<b>final</b>  ->   	Attributes and methods cannot be overridden/modified
+
+<b>static</b>  ->	Attributes and methods belongs to the class, rather than an object
+
+<b>abstract</b> ->	Can only be used in an abstract class, and can only be used on methods. The method does not have a body, for example abstract void run();. The body is provided by the subclass (inherited from).
+
+<b>transient</b>  -> 	Attributes and methods are skipped when serializing the object containing them
+
+<b>synchronized</b>   -> 	Methods can only be accessed by one thread at a time
+
+<b>volatile</b>   ->   	The value of an attribute is not cached thread-locally, and is always read from the "main memory"
+
