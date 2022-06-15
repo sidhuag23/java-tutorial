@@ -2047,3 +2047,408 @@ For attributes and methods, you can use the one of the following
 
 <b>volatile</b>   ->   	The value of an attribute is not cached thread-locally, and is always read from the "main memory"
 
+#### access speficers 
+<b>public</b>  -> anything using public keyword is visible throughout the entire program 
+
+<b>default</b> -> anything using default access modifers is only visible to anything with in the same package 
+
+<b>protected</b> -> protected is accessible whether its in different class or in different package as long as that class is a subclass of whatever class containing protected members 
+
+<b>private</b>  -> only accessible inside that class that it contain a private members only class can access private members other can't
+![image](https://user-images.githubusercontent.com/60841101/173698552-b54ec061-ea64-42b5-941d-ce779ed2feac.png)
+
+##### encapsulation
+```java 
+
+//Encapsulation is defined as the wrapping up of data under a single unit.
+// It is the mechanism that binds together code and the data it manipulates.
+// Another way to think about encapsulation is,
+// that it is a protective shield that prevents the data from being accessed by the code outside this shield
+
+//attributes of a class will be hidden/private
+//can be accessed only through methods (getters and setters)
+//you should make attributes private if you dont have a reason to make  them public/protected
+class Car{
+    private String make;
+    private String model;
+    private int year;
+
+     Car(String make ,String model,int year ) {
+         this.setMake(make);
+         this.setModel(model);
+         this.setYear(year);
+     }
+    //setter
+    public void setYear(int year){
+         this.year=year;
+    }
+    public void setMake(String make){
+         this.make=make;
+    }
+    public void setModel(String model){
+         this.model =model;
+    }
+    //inorder to access those attributes we need to create getter and setter
+    //getter
+    public String getMake(){
+         return  make;
+    }
+    public String getModel(){
+         return model;
+    }
+    public int getYear(){
+         return year;
+    }
+
+
+
+}
+
+class Main{
+    public static void main(String [] args){
+        Car new_car = new Car("porsche","cayenne",1980);
+
+        new_car.setYear(2021);
+	
+        System.out.println(new_car.getYear()); 2021
+        System.out.println(new_car.getMake()); porsche
+
+    }
+}
+```
+#### copy objects
+```java 
+//copy objects in java
+class Car {
+    String make;
+    String model;
+    int year;
+    Car(String make,String model, int year){
+        this.Setmodel(model);
+        this.Setmake(make);
+        this.Setyear(year);
+    }
+    public void Setmake(String make){
+         this.make=make;
+    }
+    public void Setmodel(String model){
+        this.model=model;
+    }
+    public void Setyear(int  year){
+        this.year =year;
+    }
+
+    public String getModel(){
+        return model;
+    }
+
+    public String getMake(){
+        return make;
+    }
+
+    public int getYear(){
+        return year;
+    }
+
+//copy object method
+   public void copy(Car new_obj){
+       this.Setmodel(new_obj.getMake());
+       this.Setmake(new_obj.getModel());
+       this.Setyear(new_obj.getYear());
+   }
+   //copy constructor
+ Car(Car new_obj){
+        this.copy(new_obj);
+ }
+
+}
+class Main{
+    public static void main(String [] args){
+        Car x = new Car("porsche","macan",1989);
+      //  Car z = new Car("lamborghini","aventadir",2021);
+     
+        //z.copy(x);
+
+
+        System.out.println(x); //Car@6d03e736  //object x's location
+        System.out.println(z); //Car@568db2f2  //object z's location
+
+    }
+}
+
+```
+
+#####  interface and implements 
+```java 
+interface test{
+    public void testing();
+}
+
+interface  Vehicle extends test{
+    public void carSound();
+}
+interface Bike {
+    public void bikeSound();
+}
+class Car implements  Vehicle,Bike {
+
+    public void carSound(){
+        System.out.println("Starting");
+    }
+
+    public void bikeSound() {
+      System.out.println("bike startes");
+    }
+
+    public void testing(){
+        System.out.println("this is just testing");
+    }
+}
+class Main{
+    public static void main(String [] args){
+
+         Car xc = new Car();
+         xc.bikeSound(); //bike startes
+         xc.testing();//this is just testing
+
+    }
+}
+
+```
+#### polymorphism
+```java 
+//polymorphism = greek word for poly -> "many" ,morph ->"forms"
+//The ability of an object to identify as more than one type
+class Vehicle{
+        void go(){
+            System.out.println("vehicle");
+        }
+}
+class Car extends Vehicle{
+         void go(){
+             System.out.println("car");
+         }
+}
+class Bike extends Vehicle{
+    void go(){
+        System.out.println("Bike");
+    }
+}
+
+class Truck extends Vehicle{
+    void go(){
+        System.out.println("Truck");
+    }
+}
+
+class Main{
+    public static void main(String [] args){
+      Car carx = new Car();
+      Bike bikex = new Bike();
+      Truck truckx = new Truck();
+
+      //Vechicle represnts these objects in many forms
+      Vehicle[] racers = {carx,bikex,truckx};
+
+      for(Vehicle i : racers ){
+          i.go();
+      }
+
+    }
+}
+```
+```output 
+car
+Bike
+Truck
+```
+```java
+class Vehicle{
+        void go(){
+            System.out.println("vehicle");
+        }
+}
+class Car extends Vehicle{
+         void go(){
+             System.out.println("car");
+         }
+}
+class Bike extends Vehicle{
+    void go(){
+        System.out.println("Bike");
+    }
+}
+
+class Truck extends Vehicle{
+    void go(){
+        System.out.println("Truck");
+    }
+}
+
+class Main{
+    public static void main(String [] args){
+      Vehicle x = new Car(); //since car is inherited 
+      x.go();  //output -> car
+      }
+
+    }
+
+```
+#### dynamic polymorphism 
+```java 
+import java.util.*;
+//polymorphism = greek word for poly -> "many" ,morph ->"forms"
+//The ability of an object to identify as more than one type
+//dynamic = after compilation(during runtime )
+//ex : an iphone identities as an ios devices , as an smartphone , as an electronic device , as an object
+class Vehicle{
+        void go(){
+            System.out.println("default");
+        }
+}
+class Car extends Vehicle{
+         void go(){
+             System.out.println("car");
+         }
+}
+class Bike extends Vehicle{
+
+    @Override
+    void go(){
+        System.out.println("Bike");
+    }
+}
+
+class Truck extends Vehicle{
+    @Override
+    void go(){
+        System.out.println("Truck");
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+	Vehicle newVehicle; 
+	
+        while (true) {
+            System.out.println("enter your choice?");
+            System.out.println("choices -> 1,2,3");
+            int choice = scanner.nextInt();
+
+            if (choice == 1) {
+                newVehicle = new Bike();
+                newVehicle.go();
+            } else if (choice == 2) {
+                newVehicle = new Car();
+                newVehicle.go();
+            } else if (choice == 3) {
+                newVehicle = new Truck();
+                newVehicle.go();
+            } else {
+                newVehicle = new Vehicle();
+                newVehicle.go();
+            }
+        }
+    }
+}
+```
+```output
+enter your choice?
+choices -> 1,2,3
+2
+car
+enter your choice?
+choices -> 1,2,3
+3
+Truck
+enter your choice?
+choices -> 1,2,3
+9
+default
+enter your choice?
+choices -> 1,2,3
+```
+#### Exception handling
+```java 
+import java.util.*;
+//exception = an event occurs during the execution of a program that,
+//disrupts the normal flow of instructions
+//we use try and catch blocks to avoid disruption and unecessary error
+class Main {
+    public static void main(String[] args) {
+       Scanner sc = new Scanner(System.in);
+       try {
+           System.out.println("enter a number");
+           int x = sc.nextInt();
+           System.out.println("enter another number");
+           int y = sc.nextInt();
+
+           int c = x / y;
+           System.out.println(c);
+       }catch (ArithmeticException z) {
+           System.out.println("dont divide by zero" + z);
+       }catch(InputMismatchException a){
+           System.out.println("dude thats an error "+a);
+       }catch(Exception  s){ //catches all types of exception
+           System.out.println("soemthing went wrong "+s);
+       }finally { //finally will always run no matter what happened
+                   //also finally used to close things like file scanner class and other memory file management things
+           sc.close();
+           System.out.println("this will always run ");
+       }
+    }
+}
+```
+```output
+enter a number
+5
+enter another number
+jhmjklk;;
+dude thats an error java.util.InputMismatchException
+this will always run 
+
+Process finished with exit code 0
+```
+#### file in java 
+```java 
+import java.io.*;
+//file = An abstract representation of file and directory path names
+class Main {
+    public static void main(String[] args) {
+
+         File file = new File("C:\\Users\\91944\\Desktop\\test.txt");
+         //.exists() to check whether the file exist or not
+         if(file.exists()){
+             System.out.println("That file exists !");
+             System.out.println(file.getPath()); //gets the path
+             System.out.println(file.getAbsolutePath()); //gets full file location
+             System.out.println(file.isFile()); //checks whether a file is a file or not 
+             file.delete(); //will delete file
+         }else{
+            System.out.println("That file doesnt exist");
+         }
+    }
+}
+
+```
+#### writing to a file
+```java
+import java.io.*;
+//writing to a file 
+class Main {
+    public static void main(String[] args) {
+
+        try{
+            FileWriter write_into = new FileWriter("C:\\Users\\91944\\Desktop\\test.txt"); //FileWriter constructor
+            write_into.write("this is just a test\n kewjflkewjfkl\neffllkjfkl"); // will write text to the file
+            write_into.append("ewfje\neflkl"); //will add text  at the end
+            write_into.close();
+        }catch(Exception z){
+            System.out.println("some issue "+z);
+        }
+
+    }
+}
+```
