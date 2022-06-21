@@ -2452,3 +2452,74 @@ class Main {
     }
 }
 ```
+#### Reading a existing file
+```java 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+class Main {
+    public static void main(String[] args) throws FileNotFoundException {
+
+         //FileReader = read the contents of a file as a stream of characters . One by One
+        // read() -> returns an int value which contains -> byte value
+        // when read() returns -1 , there is no more data to be read
+try {
+    FileReader reader = new FileReader("C:\\Users\\91944\\Desktop\\test.txt"); //Reader class instance
+    int data = reader.read(); //read method
+    System.out.println("this is a thing "+data);
+    while(data != -1){
+        System.out.print((char)data); //type  casting as character values
+        data = reader.read();
+    }
+    reader.close(); //close method
+}catch(FileNotFoundException x){
+    System.out.println("this is an error"+x);
+} catch (IOException e) {  //instance
+    System.out.println("this is another error read "+e);
+}
+    }
+}
+```
+#audio file in java 
+```java 
+import javax.sound.sampled.*;
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
+
+// audio in java
+
+class Main {
+    public static void main(String[] args) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+
+         File file_data = new File("C:\\Users\\91944\\Desktop\\BabyElephantWalk60.wav"); //normal file instance
+         AudioInputStream audioStreamTest = AudioSystem.getAudioInputStream(file_data); //putting audio file in AudioInputStream's instance
+
+         Clip my_audio = AudioSystem.getClip(); 
+         my_audio.open(audioStreamTest); //opens the audio file 
+
+         String response="";
+         Scanner sc = new Scanner(System.in);
+         while(!response.equals("Q")){
+             System.out.println("enter the choice  Q=quit P=play S=stop R=reset E=exit");
+             response = sc.next();
+
+               switch(response){
+                   case "P" :my_audio.start();   //.start() -> starts audio
+                              break;
+                   case "S":my_audio.stop();  //.stop() -> stop audio
+                                break;
+                   case "R":my_audio.setMicrosecondPosition(0); //.setMicrosecondPosition -> set positon of the track
+                                break;
+                   case "Q":my_audio.close();//.close() -> closes the file 
+                                break;
+                   default : System.out.println("Not a valid response");
+             }
+             System.out.println("the audio  has been closed");
+        }
+    }
+}
+```
+
+
