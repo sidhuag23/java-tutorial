@@ -2521,5 +2521,84 @@ class Main {
     }
 }
 ```
+#### generics 
+generic method = enables types (classes and interface) to be parameters when defining : classes interface and methods
+ a benefit is to eliminate the need to create multiple versions of methods or classes for various data types
+use 1 versions for all reference data types
+
+```java 
+// generics method
+class Main {
+    public static void main(String [] args){
+        Integer[] array1 = {1,2,3,4,5};
+        Integer[] array2 = {1222,222,3222,422,522};
+        Double[] array3 = {13.3,23.2,33.2,43.2,53.2};
+        String[] array4 = {"d","w"};
+
+        displayArray(array1);
+        displayArray(array2);
+        displayArray(array3);
+        displayArray(array4);
+    }
+    public static <generic_method> void displayArray(generic_method[] array){
+           for(generic_method x:array){
+                  System.out.println("this is that thig "+x);
+           }
+           System.out.println("stop");
+    }
+    }
+```
+```console
+this is that thig1
+this is that thig2
+this is that thig3
+this is that thig4
+this is that thig5
+stop
+this is that thig1222
+this is that thig222
+this is that thig3222
+this is that thig422
+this is that thig522
+stop
+this is that thig13.3
+this is that thig23.2
+this is that thig33.2
+this is that thig43.2
+this is that thig53.2
+stop
+this is that thigd
+this is that thigw
+stop
+```
+
+```java 
+// generics method
+class Main {
+    public static void main(String [] args){
+        Integer[] array1 = {1,2,3,4,5};
+        Integer[] array2 = {1222,222,3222,422,522};
+        Double[] array3 = {13.3,23.2,33.2,43.2,53.2};
+        String[] array4 = {"d","w"};
+
+        System.out.println( getFirst(array1));
+        System.out.println(getFirst(array2));
+        System.out.println(getFirst(array3));
+        System.out.println(getFirst(array4));
+
+    }
+    public static <cool_T> cool_T getFirst(cool_T[] array_cool){
+        return array_cool[0];
+    }
+
+    }
+```
+```console
+1
+1222
+13.3
+d
+```
+
 
 
