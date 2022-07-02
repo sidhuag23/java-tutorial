@@ -2599,6 +2599,135 @@ class Main {
 13.3
 d
 ```
+#### generic class
+```java
+//generic classes
+class MygenericClass <Thing>{
+    Thing x;
+    MygenericClass(Thing x){
+        this.x = x;
+    }
+    public Thing getValue(){
+        return x;
+    }
+}
+class Main {
+    public static void main(String[] args) {
+
+        MygenericClass<Integer> MyInt = new MygenericClass<>(1);
+        MygenericClass<String> MyString = new MygenericClass<>("its a strting");
+        MygenericClass<Double> Double = new MygenericClass<>(23.3);
+        MygenericClass<Boolean> TrueOrFalse = new MygenericClass<>(true);
+
+        System.out.println(MyInt.getValue());
+        System.out.println(MyString.getValue());
+        System.out.println(Double.getValue());
+        System.out.println(TrueOrFalse.getValue());
+
+    }
+}
+```
+```output
+1
+its a strting
+23.3
+true
+```
+```java 
+//generic classes can have infinte number of parameters (Tags)
+class MygenericClass <Thing,Thing2>{
+    Thing x;
+    Thing2 y;
+    MygenericClass(Thing x,Thing2 y){
+        this.x = x;
+        this.y = y;
+    }
+    public Thing getValue(){
+        return x;
+    }
+    public Thing2 getValue2(){
+        return y;
+    }
+}
+class Main {
+    public static void main(String[] args) {
+
+        MygenericClass<Integer,String> MyInt = new MygenericClass<>(1,"qwertgh55655");
+        MygenericClass<String,Boolean> MyString = new MygenericClass<>("its a strting",true);
+        MygenericClass<Double,Integer> Double = new MygenericClass<>(3.3,4);
+        MygenericClass<Double,Boolean> TrueOrFalse = new MygenericClass<>(3.3,true);
+
+        System.out.println(MyInt.getValue() + " "+MyInt.getValue2());
+        System.out.println(MyString.getValue() + " "+MyInt.getValue2());
+        System.out.println(Double.getValue() + " "+MyInt.getValue2());
+        System.out.println(TrueOrFalse.getValue() + " "+MyInt.getValue2());
+
+    }
+}
+```
+```output 
+1 qwertgh55655
+its a strting qwertgh55655
+3.3 qwertgh55655
+3.3 qwertgh55655
+
+```
+#### bounded types in generics 
+```java 
+// bounded types = you can create the object of a generic ,
+// class to have data of specific derived types  ex.Numbers
+//We can send any reference data types but it has to be a subclass of the particular class
+//Number class (a class contain wide variety)
+class MygenericClass <Thing extends Number ,Thing2 extends Number >{
+    Thing x;
+    Thing2 y;
+    MygenericClass(Thing x,Thing2 y){
+        this.x = x;
+        this.y = y;
+    }
+    public Thing getValue(){
+        return x;
+    }
+    public Thing2 getValue2(){
+        return y;
+    }
+}
+class Main {
+    public static void main(String[] args) {
+
+        MygenericClass<Integer,Integer> MyInt = new MygenericClass<>(1,2);
+
+        MygenericClass<Double,Integer> Double = new MygenericClass<>(3.3,4);
 
 
+        System.out.println(MyInt.getValue() + " "+MyInt.getValue2());
 
+        System.out.println(Double.getValue() + " "+MyInt.getValue2());
+
+
+    }
+}
+```
+```output
+1 2
+3.3 2
+```
+#### serilization 
+The process of converting an object into a byte stream,
+Persists(saves the state ) the object after the program exits
+This byte stream can be saved as a file or sent over a network 
+can be sent to a different machine 
+Byte stream can be saved as a file (.ser) which is platform independent 
+(Think of this as id you are saving a file with the objects informations )
+
+#### Deserialization 
+The reverse process of converting a byte a stream into an object (Think of this as if you are loading a saved file )
+
+#### steps to serialize an object 
+1. Your object class should implement serializable interface 
+2. add import java.io.serialization
+3. FileOutputStream fileOut = new FileOutputStream(file path)
+4. ObjectOutputStream out = new ObjectOutputputStream(fileOut);
+5. out.writeObject(ObjectName)
+6. out.close();
+7. fileOut.close();
