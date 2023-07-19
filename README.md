@@ -2731,3 +2731,33 @@ The reverse process of converting a byte a stream into an object (Think of this 
 5. out.writeObject(ObjectName)
 6. out.close();
 7. fileOut.close();
+
+
+//need to write next serialization 
+
+In Java, the syntax (OBJ_name) is used for explicit type casting or type conversion. It is used when you want to convert an object from one type to another, provided that there is a valid inheritance relationship or interface implementation between the types involved.
+
+Type casting in Java is a way to treat an object of one class as another class, either from a superclass to a subclass (downcasting) or from a subclass to a superclass (upcasting). Here's an explanation of each scenario:
+
+Downcasting: When you have a reference to a superclass and want to treat it as an object of a subclass, you use explicit downcasting. It is important to note that downcasting can only be done when the actual object being referred to is of the subclass type.
+
+```java
+Superclass obj1 = new Subclass();  // Upcasting (implicitly done)
+Subclass obj2 = (Subclass) obj1;  // Downcasting (explicitly done)
+```
+Upcasting: When you have an object of a subclass and want to treat it as an object of a superclass, you can use explicit upcasting. Upcasting is always allowed since the subclass is a specialized version of the superclass.
+
+```java
+Subclass obj1 = new Subclass();
+Superclass obj2 = obj1;  // Upcasting (implicitly done)
+```
+It's important to be cautious when performing downcasting since it can lead to ClassCastException if the actual object being referred to is not of the expected subclass type. To avoid such exceptions, you can use the instanceof operator to check the compatibility of the object before performing the downcast.
+
+```java
+if (obj1 instanceof Subclass) {
+    Subclass obj2 = (Subclass) obj1;  // Downcasting (guarded by instanceof check)
+}
+```
+
+Type casting allows you to access specific members or behaviors of a class that are not available in its superclass or interface. However, it should be used carefully to avoid runtime errors and ensure that the cast is valid.
+
