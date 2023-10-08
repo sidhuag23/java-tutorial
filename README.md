@@ -716,6 +716,32 @@ public class Fun {
 
 ```java 
 import java.util.*;
+
+public class NewJavaTest{
+
+   public static void main(String []args){
+      
+       String [][] cars ={ // 0      1
+                          {"porsche","cayenne" }, //0
+                          {"bentley","mulsanne" }, //1
+                          { "macan","aventador" } , //2
+                          {"lamborghini","hurcanLP23","v12"} //3
+                          };
+
+       System.out.println(cars[1][1]);  //mulsanne
+       System.out.println(cars.length);   // 4
+       System.out.println(cars[3].length); //3 
+
+       for(int i=0; i<cars[3].length; i++){
+        System.out.print(" "+cars[3][i]); //lamborghini hurcanLP23 v12
+       }
+   }
+}
+```
+
+
+```java 
+import java.util.*;
 import javax.swing.JOptionPane;
 import java.util.Random;
 
