@@ -375,6 +375,40 @@ public class Fun {
     }
 }
 ```
+
+```java
+import java.util.*;
+
+public class NewJavaTest{
+   
+   public static void main(String [] args){
+     
+     String number = "";
+     Scanner x = new Scanner(System.in);
+     String isAnumber=" ";
+
+     Boolean numberTest = false; 
+
+     while(isAnumber.isBlank() && (numberTest==false)){ 
+        System.out.println("enter the number");
+        number = x.nextLine();       
+        try{
+           Integer.parseInt(number);
+           numberTest = true; 
+           isAnumber = number;
+        
+        }catch(NumberFormatException e){
+           numberTest=false;
+           System.out.println(number+"not a number");
+           continue;
+        }
+     }
+     System.out.println(isAnumber);
+   }
+}
+```
+
+
 do while loop
 ```java
 public class Fun {
