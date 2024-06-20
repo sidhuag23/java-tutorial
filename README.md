@@ -100,7 +100,7 @@ public class Test{
 }
 ```
 
-``` 
+
 ##### operators in java 
 ```java
 public class Fun {
