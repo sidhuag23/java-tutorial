@@ -80,6 +80,25 @@ public class Fun {
             }
 }
 
+stops when the name is not blank ("")
+```java
+import java.util.*;
+// Class just an instance of an object 
+public class Test{
+    public static void main(String [] args){
+     Scanner sc = new Scanner(System.in);
+
+     String name = "";
+     while(name==""){
+        System.out.println("enter that thing");
+        name = sc.nextLine();
+     }
+     System.out.println("well name you entered is "+name);
+     sc.close();
+}
+}
+```
+
 ``` 
 ##### operators in java 
 ```java
