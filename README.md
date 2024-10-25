@@ -823,6 +823,54 @@ public class Fun {
 }
 
 ```
+#### 2D array -> <2D array with <?>> ?-> used to make it type agnostic 
+```java
+package NewJava;
+import java.util.*;
+
+class Test{
+  
+    public static void main(String [] args){       
+        
+        Scanner sc = new Scanner(System.in);
+        //-> ? make it type agnostic dont need to specifiy type   
+        ArrayList<ArrayList<?>> automobile_name = new ArrayList(); // <ArrayList<?>> -> for multi List
+     
+        ArrayList<String> cars_name = new ArrayList<String>(); //List car_name;        
+        for(int i=0; i<=3; i++){
+            System.out.println("enter the car name");
+            String Cname=sc.nextLine();
+            cars_name.add(Cname);
+        }
+
+        ArrayList<String> car_brand = new ArrayList<String>(); //List car_brand;
+        for(int i=0;i<=3;i++){
+            System.out.println("enter the car brand ");
+            String Bname = sc.nextLine();
+            car_brand.add(Bname);
+        }
+        
+        ArrayList<Integer> car_years = new ArrayList<Integer>();
+        for(int i=0; i<3; i++){
+            System.out.println("enter the production years");
+            Integer Yname = sc.nextInt();
+            car_years.add(Yname);
+        }
+
+        //append / add this to the 2d List automobile_name
+        automobile_name.add(cars_name);
+        automobile_name.add(car_brand);
+        automobile_name.add(car_years);
+
+        System.out.println(automobile_name.get(1).get(2));
+        System.out.println(automobile_name);
+
+        sc.close();
+
+    }
+}
+
+```
 
 #### Java for each loop
 
